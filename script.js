@@ -14,7 +14,7 @@ let lowerCase = userInput.toLowerCase();
     }
 }
 
-humanMove ();
+
 
 
 // Computer Input
@@ -25,49 +25,54 @@ function getRandomInt(min, max) {
 
 function computerTurn ()
 {
-    randNum = getRandomInt(1, 3);
+    randNum = getRandomInt(1, 4);
 
-    if (randNum = 1)  
+    if (randNum === 1)  
     {
         let computerMove = "rock";
         return computerMove;
     }
 
-   else if (randNum =2)
+   else if (randNum ===2)
    {
     let computerMove = "paper"
     return computerMove;
    }
 
-   else if (randNum = 3)
+   else if (randNum === 3)
 
    {
-    let computerMove = "sissors"
+    let computerMove = "scissors"
     return computerMove;
    }
 
 
 }
 
+
+
 //Logic In Winning 
 
 function battle(){
     //Human Wins
-    if (computerTurn === "rock" && humanMove === "paper")
+    let com = computerTurn();
+    let human = humanMove();
+
+    if (com === "rock" && human === "paper")
     {
         console.log("You Won")
         let playerWon = true;
         return playerWon;
     }
 
-    else if (computerTurn === "paper" && humanMove === "scissors")
+    else if (com === "paper" && human === "scissors")
     {
         console.log("You Won")
         let playerWon = true;
         return playerWon;
     }
 
-    else if (computerTurn === "scissors" && humanMove === "rock")
+    else if (com === "scissors" && human === "rock")
     {
         console.log("You Won")
         let playerWon = true;
@@ -75,21 +80,21 @@ function battle(){
     }
 
     //Com wins
-    else if (computerTurn === "rock" && humanMove === "scissors")
+    else if (com === "rock" && human === "scissors")
     {
         console.log("You Lose")
         let playerWon = false;
         return playerWon;
     }
 
-    else if (computerTurn === "paper" && humanMove === "rock")
+    else if (com === "paper" && human === "rock")
     {
         console.log("You Lose")
         let playerWon = false;
         return playerWon;
     }
 
-    else if (computerTurn === "scissors" && humanMove === "paper")
+    else if (com === "scissors" && human === "paper")
     {
         console.log("You Lose")
         let playerWon = false;
@@ -97,11 +102,55 @@ function battle(){
     }
 
     else {console.log("Tie")
-        let tie = true;
+        let tie = 3;
         return tie;
     
     }
 }
+
+
+
+// Keep Track Of The score
+
+let comScore = 0;
+let humanScore = 0;
+
+function Score ()
+{
+    let playerWin = battle();
+    if (playerWin ===  false )
+    {
+        comScore++;
+         
+    }
+
+    else if (playerWin === true)
+    {
+        humanScore++;
+        
+    } 
+
+    else 
+    {
+        return
+    }
+
+    
+    
+
+}
+
+
+
+Score();
+console.log(comScore + " " + humanScore);
+
+
+Score()
+console.log(comScore + " " + humanScore);
+
+        
+
 
 
 
