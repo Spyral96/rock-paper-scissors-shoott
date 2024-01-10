@@ -1,12 +1,16 @@
 
 //Ask User For Move /Convert string in lower-case and saviing it as a varaible 
+
+
 function humanMove () {
 let userInput = prompt("Choose Rock,Paper or Scissors");
 
 let lowerCase = userInput.toLowerCase();
     if (lowerCase === "rock" || lowerCase === "paper" || lowerCase === "scissors")
     {
+        console.log(`You throw ${lowerCase}!`)
         return lowerCase;
+        
     }
     else {
         console.log("That is not a move");
@@ -30,12 +34,14 @@ function computerTurn ()
     if (randNum === 1)  
     {
         let computerMove = "rock";
+        console.log(`Computer Throws ${computerMove}!`)
         return computerMove;
     }
 
    else if (randNum ===2)
    {
     let computerMove = "paper"
+    console.log(`Computer Throws ${computerMove}!`)
     return computerMove;
    }
 
@@ -43,6 +49,7 @@ function computerTurn ()
 
    {
     let computerMove = "scissors"
+    console.log(`Computer throws ${computerMove}!`)
     return computerMove;
    }
 
@@ -55,9 +62,10 @@ function computerTurn ()
 
 function battle(){
     //Human Wins
-    let com = computerTurn();
     let human = humanMove();
 
+    let com = computerTurn();
+    
     if (com === "rock" && human === "paper")
     {
         console.log("You Won")
@@ -141,14 +149,33 @@ function Score ()
 }
 
 
+//The Flow And (ironically) The Start Of The Game
 
-Score();
-console.log(comScore + " " + humanScore);
+let roundNum = 1;
+
+console.log("Best Out Of Five");
+
+while (comScore < 3 && humanScore < 3)
+{
+    console.log("");
+    console.log(`Round: ${roundNum}`);
+    Score();
+    console.log(`Player: ${humanScore} Computer: ${comScore} `)
+    roundNum++;
+
+}
 
 
-Score()
-console.log(comScore + " " + humanScore);
+if (comScore === 3)
+{
+    console.log("The Computer Has Beat You")
 
+}
+
+else if (humanScore === 3)
+{
+    console.log("You Have Beaten The Computer!")
+}
         
 
 
