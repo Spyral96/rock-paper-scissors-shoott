@@ -1,0 +1,27 @@
+.actionScreenContainer {
+    
+    border: solid 10px red;
+    justify-content: space-evenly;
+    
+
+
+}
+
+#humanIcon ,#comIcon,#humanMove,#comMove {
+    width:300px;
+    height: auto ;
+}
+
+.actionScreen {
+    display: flex;
+    
+}
+
+h1 {
+    text-align: center;
+
+}
+
+h2 {
+    text-align: center;
+}
