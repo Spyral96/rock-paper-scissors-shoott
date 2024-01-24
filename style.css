@@ -25,3 +25,14 @@ h1 {
 h2 {
     text-align: center;
 }
+
+.moveButtonsContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.moveButtons {
+    width: 300px;
+    height: 65px;
+    border-radius: 10px;
+}

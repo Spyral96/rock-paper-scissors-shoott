@@ -13,6 +13,10 @@ let humanAction = document.querySelector('#humanMove')
 let humanActionText = document.querySelector('#humanMoveText')
 
 
+//global Var
+let humanScoreCounter = 0;
+let computerScoreCounter = 0;
+
 rockButton.addEventListener('click', function() {
     
     let humanMove = "rock"; 
@@ -32,15 +36,19 @@ rockButton.addEventListener('click', function() {
     if (playerWon === 1)
     {
         battleResult.textContent = "You Win"
+        humanScoreCounter ++;
     }
 
     else if (playerWon === 2)
     {
         battleResult.textContent = "You Lose"
+        computerScoreCounter ++;
     }
 
 
     else if (playerWon === 3) {battleResult.textContent ="Tie"}
+
+    checkEndGame();
 
     
     
@@ -51,6 +59,8 @@ paperButton.addEventListener('click',function()
     let humanMove = "paper";
     humanAction.src = "imgs/paper.png";
     humanAction.alt = "paper-img"
+    humanActionText.textContent = "You Threw Paper";
+
     console.log(humanMove);
     let comMove = computerTurn();
     console.log(comMove);
@@ -60,17 +70,23 @@ paperButton.addEventListener('click',function()
     if (playerWon === 1)
     {
         battleResult.textContent = "You Win"
+        humanScoreCounter ++;
     }
 
     else if (playerWon === 2)
     {
         battleResult.textContent = "You Lose"
+        computerScoreCounter ++;
+
     }
 
 
     else if (playerWon === 3) {battleResult.textContent ="Tie"}
 
-    
+    console.log(computerScoreCounter);
+    console.log(humanScoreCounter);
+
+    checkEndGame();
 
 });
 
@@ -79,6 +95,8 @@ scissorsButton.addEventListener('click',function()
     let humanMove = "scissors";
     humanAction.src = "imgs/scissors.png";
     humanAction.alt = "scissors-img";
+    humanActionText.textContent = "You Threw Scissors";
+
     console.log(humanMove);
     let comMove = computerTurn();
     console.log(comMove);
@@ -88,21 +106,67 @@ scissorsButton.addEventListener('click',function()
     if (playerWon === 1)
     {
         battleResult.textContent = "You Win"
+        humanScoreCounter ++;
     }
 
     else if (playerWon === 2)
     {
         battleResult.textContent = "You Lose"
+        computerScoreCounter ++;
     }
 
 
     else if (playerWon === 3) {battleResult.textContent ="Tie"}
 
+    checkEndGame();
 
 })
 
 
+//Score Keeper (To End Match once someone gets 3 win(best out of 5))
+endScreen = document.querySelector(".endScreen");
+endScreenContainer= document.querySelector(".endScreenContainer");
+let playAgainButton =  document.createElement('button');
+playAgainButton.id = "playAgainButton";
 
+function checkEndGame ()
+{
+    if (humanScoreCounter === 3)
+        {
+            rockButton.disabled = true;
+            paperButton.disabled = true;
+            scissorsButton.disabled = true;
+
+            endScreen.textContent = "You Beat The Computer!!!"
+            playAgainButton.textContent = "Play Again?";
+
+            endScreenContainer.appendChild(playAgainButton);
+        }
+
+    else if (computerScoreCounter === 3)
+        {
+            rockButton.disabled = true;
+            paperButton.disabled = true;
+            scissorsButton.disabled = true;
+
+            endScreen.textContent = "You Lost To The Computer";
+            
+            playAgainButton.textContent = "Play Again?";
+            endScreenContainer.appendChild(playAgainButton);
+        }
+}
+
+playAgainButton.addEventListener("click", function()
+{
+    rockButton.disabled = false;
+    paperButton.disabled = false;
+    scissorsButton.disabled = false;
+
+    humanScoreCounter = 0;
+    computerScoreCounter = 0;
+    endScreen.textContent = "";
+    playAgainButton.remove();
+})
 
 
    
@@ -115,7 +179,7 @@ scissorsButton.addEventListener('click',function()
     // Computer Input
     
     comAction = document.querySelector('#comMove');
-
+    comActionText = document.querySelector("#comMoveText");
     //RandomNum generator to allow computer to make move out "3" choices/moves
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
@@ -130,6 +194,8 @@ scissorsButton.addEventListener('click',function()
             let computerMove = "rock";
             comAction.src = "imgs/rock.png";
             comAction.alt = "rock-img";
+            comActionText.textContent = "Computer Threw Rock";
+
             return computerMove;
         }
     
@@ -137,7 +203,8 @@ scissorsButton.addEventListener('click',function()
        {
         let computerMove = "paper"
         comAction.src = "imgs/paper.png";
-            comAction.alt = "paper-img";
+        comAction.alt = "paper-img";
+        comActionText.textContent = "Computer Threw paper";
         return computerMove;
        }
     
@@ -147,6 +214,7 @@ scissorsButton.addEventListener('click',function()
         let computerMove = "scissors"
         comAction.src = "imgs/scissors.png";
         comAction.alt = "scissors-img";
+        comActionText.textContent = "Computer Threw Scissors"
         return computerMove;
        }
     
