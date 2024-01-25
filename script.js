@@ -16,6 +16,12 @@ let humanActionText = document.querySelector('#humanMoveText')
 //global Var
 let humanScoreCounter = 0;
 let computerScoreCounter = 0;
+//DOM ScoreBoard so it can updates via ++ per round won
+let humanScoreBoard = document.querySelector("#humanScore");
+humanScoreBoard.textContent = 0;
+let computerScoreBoard = document.querySelector("#comScoreBoard");
+
+
 
 rockButton.addEventListener('click', function() {
     
@@ -37,12 +43,14 @@ rockButton.addEventListener('click', function() {
     {
         battleResult.textContent = "You Win"
         humanScoreCounter ++;
+        humanScoreBoard.textContent = humanScoreCounter;
     }
 
     else if (playerWon === 2)
     {
         battleResult.textContent = "You Lose"
         computerScoreCounter ++;
+        computerScoreBoard.textContent = computerScoreCounter;
     }
 
 
@@ -71,12 +79,14 @@ paperButton.addEventListener('click',function()
     {
         battleResult.textContent = "You Win"
         humanScoreCounter ++;
+        humanScoreBoard.textContent = humanScoreCounter;
     }
 
     else if (playerWon === 2)
     {
         battleResult.textContent = "You Lose"
         computerScoreCounter ++;
+        computerScoreBoard.textContent = computerScoreCounter;
 
     }
 
@@ -107,12 +117,14 @@ scissorsButton.addEventListener('click',function()
     {
         battleResult.textContent = "You Win"
         humanScoreCounter ++;
+        humanScoreBoard.textContent = humanScoreCounter;
     }
 
     else if (playerWon === 2)
     {
         battleResult.textContent = "You Lose"
         computerScoreCounter ++;
+        computerScoreBoard.textContent = computerScoreCounter;
     }
 
 
@@ -128,6 +140,9 @@ endScreen = document.querySelector(".endScreen");
 endScreenContainer= document.querySelector(".endScreenContainer");
 let playAgainButton =  document.createElement('button');
 playAgainButton.id = "playAgainButton";
+
+
+
 
 function checkEndGame ()
 {
@@ -166,7 +181,11 @@ playAgainButton.addEventListener("click", function()
     computerScoreCounter = 0;
     endScreen.textContent = "";
     playAgainButton.remove();
+    humanScoreBoard.textContent = 0;
+    computerScoreBoard.textContent=0;
 })
+
+
 
 
    

@@ -2,18 +2,26 @@
     
     border: solid 10px red;
     justify-content: space-evenly;
+    width: 200px;
+    height: auto;
     
 
 
 }
 
 #humanIcon ,#comIcon,#humanMove,#comMove {
-    width:300px;
+    width:200px;
     height: auto ;
+}
+
+#comScore, #humanScoreBoard {
+    padding-top: 70px;
+
 }
 
 .actionScreen {
     display: flex;
+    
     
 }
 
@@ -29,6 +37,7 @@ h2 {
 .moveButtonsContainer {
     display: flex;
     justify-content: space-evenly;
+    
 }
 
 .moveButtons {
